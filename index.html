@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POS Cafetería</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <div class="panel-catalogo">
+      <h2>Barra de Especialidad</h2>
+      <div class="grid-productos" id="gridProductos"></div>
+    </div>
+
+    <div class="panel-ticket">
+      <h2>Orden Actual</h2>
+      <div class="lista-carrito" id="listaCarrito">
+        <p class="vacio">No hay bebidas en la orden</p>
+      </div>
+      <div class="footer-ticket">
+        <div class="total-row">
+          <span>TOTAL:</span>
+          <strong id="totalTxt">$0</strong>
+        </div>
+        <button id="btnCobrar" class="btn-cobrar" disabled>CONFIRMAR Y COBRAR</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="modalOverlay">
+    <div class="modal">
+      <h3 id="modalTitulo">Especificaciones</h3>
+      
+      <div class="campo">
+        <label>Tipo de Leche:</label>
+        <select id="selectLeche">
+          <option value="Entera (+$0)">Entera</option>
+          <option value="Deslactosada (+$0)">Deslactosada</option>
+          <option value="Avena (+$10)">Avena (+$10)</option>
+          <option value="Almendra (+$10)">Almendra (+$10)</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Notas del cliente:</label>
+        <input type="text" id="inputNotas" placeholder="Ej. Sin azúcar, extra caliente...">
+      </div>
+
+      <div class="modal-botones">
+        <button id="btnCancelar">Cancelar</button>
+        <button id="btnAgregar" class="btn-principal">Agregar a la orden</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
