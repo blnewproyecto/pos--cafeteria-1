@@ -107,8 +107,43 @@ btnCobrar.onclick = () => {
   });
   localStorage.setItem('inventario', JSON.stringify(inventario));
 
-  // 2. Generar e Imprimir Ticket
-  imprimirTicket(carrito, totalVenta);
+  function imprimirTicket(items, total) {
+  const ventana = window.open('', '', 'width=300,height=500');
+  ventana.document.write(`
+    <html>
+      <head>
+        <style>
+          body { font-family: monospace; width: 58mm; padding: 5px; margin: 0; }
+          .centro { text-align: center; }
+          .linea { border-bottom: 1px dashed #000; margin: 5px 0; }
+          .flex { display: flex; justify-content: space-between; font-weight: bold; }
+        </style>
+      </head>
+      <body>
+        <div class="centro">
+          <strong>CAFETERÍA DE ESPECIALIDAD</strong><br>
+          Ticket de Venta
+        </div>
+        <div class="linea"></div>
+        ${items.map(i => `
+          <div class="flex"><span>${i.nombre}</span><span>$${i.precio}</span></div>
+          <small>• ${i.leche}</small><br>
+        `).join('')}
+        <div class="linea"></div>
+        <div class="flex">
+          <span>TOTAL:</span>
+          <span>$${total}</span>
+        </div>
+        <div class="linea"></div>
+        <div class="centro"><br>¡Gracias por tu compra!</div>
+        <script>
+          window.onload = function() { window.print(); window.close(); }
+        </script>
+      </body>
+    </html>
+  `);
+  ventana.document.close();
+}
 
   // 3. Limpiar Orden
   carrito = [];
