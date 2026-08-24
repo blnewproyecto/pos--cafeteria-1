@@ -124,7 +124,7 @@ function imprimirTicket(items, total) {
           body { font-family: monospace; width: 58mm; padding: 5px; margin: 0; }
           .centro { text-align: center; }
           .linea { border-bottom: 1px dashed #000; margin: 5px 0; }
-          .flex { display: flex; justify-content: space-between; }
+          .flex { display: flex; justify-content: space-between; font-weight: bold; }
         </style>
       </head>
       <body>
@@ -138,7 +138,10 @@ function imprimirTicket(items, total) {
           <small>• ${i.leche}</small><br>
         `).join('')}
         <div class="linea"></div>
-        <div class="flex"><strong>TOTAL:</strong><strong>$${total}</strong></div>
+        <div class="flex">
+          <span>TOTAL:</span>
+          <span>$${total}</span>
+        </div>
         <div class="linea"></div>
         <div class="centro"><br>¡Gracias por tu compra!</div>
         <script>
@@ -149,5 +152,4 @@ function imprimirTicket(items, total) {
   `);
   ventana.document.close();
 }
-
 cargarCatalogo();
